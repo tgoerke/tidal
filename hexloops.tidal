@@ -1,0 +1,51 @@
+# Tidal Tutorial #4: striating long melodic sequences
+# by kindohm
+# https://www.youtube.com/watch?v=UAup_YOA1X0
+# remixed by kn00t 
+# 2019 June Hexloop samples
+# 2020 March TASTERS samples
+#
+# Load sample in Superdirt:
+# sc3> ~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/HexLoops.House.FREE.Drops/Kit02_C_128bpm")
+# sc3> ~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/TASTERS/*")
+
+
+d1 $ striate 3 $ sound "kit02_c_128bpm:0"
+
+d2 $  stack [
+degradeBy 0.1 $ slow 4 $ (striate 16  $ sound "kit02_c_128bpm")
+|+| speed "[1 2, [1.25 1.25 2]*3]*2"
+|+| delay "0.4",
+sound "bd cp [~ bd] cp",
+sound "hh*8"
+]
+
+bps (128/60)
+
+d2 $ stack [
+slow 16 $ striate' 128 (1/60) $ sound "kit02_c_128bpm"
+|+| speed "[1 2 4, [1.25 1.25 2]*3]*4"
+|+| delayfeedback "0.5" |+| delaytime "0.3",
+sound "bd cp [~ bd] cp",
+sound "hh*8"
+]
+
+hush
+
+# =======================================================================================================
+# chemical_big_beats (5) cold_fusion_technologic (5) drumnbass_delights (5) hiphop_riddims (5) on_a_latin_tip (5) the_electro_age (5)
+
+hush
+
+d1 $ striate 16 $ sound "chemical_big_beats:5"
+
+d1 $ striate 256 $ sound "hiphop_riddims:4"
+|+| speed "[0.5 0.3 1.5, [1.5 1.25 4]*3 4]*4"
+|+| delayfeedback "1.5" |+| delaytime "1.5"
+
+d2 $ striate 32 $ sound "hiphop_riddims:0"
+|+| speed "[1 2 3, [1.25 1.25 2] 4*4]"
+
+d1 $ striate 160 $ sound "the_electro_age:3"
+
+hush

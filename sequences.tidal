@@ -1,0 +1,111 @@
+d1 $ stack [
+sound "bd:10 sn:2" # speed "1" # vowel "[a o]/2",
+degradeBy 0.1 $ sound "casio casio:4 casio:2" 
+]
+
+d1 $ foldEvery [2, 4, 3] (chop 10) $ sound "bd sn:2"
+
+d1 $ sound (samples "future future*3 tabla sn casio casio casio sn sn" (run 100))
+
+d1 $ midinote "60 62*2" # s "supersaw"
+
+t1 (xfadeIn 16) $ silence
+
+d1 $ fit' 1 4 (run 4) "[0 3*2 2 1 0 3*2 2 [1*8 ~]]/2" $ chop 4 $ (sound "breaks152" # unit "c")
+
+d1 $ sound (fit' 1 2 "0 1" "1 0" "bd sn")
+
+
+d1 $ sound (fit 3 ["bd", "sn", "arpy", "arpy:1"] "[~ 1 3] 2 0 1")
+
+d1 $ foldEvery [3, 4, 5] (slow 2) $ sound "bd sn kurt"
+
+d1 $ seqP [ 
+  (0, 12, sound "bd bd*2"), 
+  (4, 12, sound "hh*2 [sn cp] cp future*4"), 
+  (8, 12, sound (samples "arpy*8" (run 16)))
+]
+
+cps (1)
+
+d1 $ (pure now()) ~> seqP [ 
+  (0, 13, sound "bd bd*2"), 
+  (4, 11, sound "hh*2 [sn cp] cp future*4"), 
+  (8, 12, sound (samples "arpy*8" (run 16)))
+]
+
+d1 $ sound "jvbass(3,8)"
+
+t1 (anticipateIn 4) $ sound "jvbass(5,8)"
+
+d1 $ sound "[[rave rave] rave]" # legato "1"
+
+let pat = "bd sn" :: Pattern String
+
+d1 <$> pat
+
+(++ " sounding") <$> pat
+
+hush
+
+d1 $ n (run 4) # s "drum"
+
+d1 $ (every 4) rev $ up "0 1 2 3 4 5 6 7 8 9 10 11" # sound "arpy"
+
+let p1 = ("x ~ x ~ ~"::Pattern String)
+
+let pp = preplace (2,1)
+
+let f pitches = up (preplace (1,1) ("1 1 ~ ~ ~" :: Pattern Double) $ cat $ map return pitches)
+
+let dbl p = stack [p, p]
+
+cps $ 1 / 1.1
+
+d1 $ sound "hc" #  (slow 3 $ gain sinewave)
+
+d2 $ stack [sound $ pp p1 "hh cp cp", slow 3 $ sound "[bleep:4 bleep:5]/2"]
+
+d3 $ every 3 dbl $ rl (2/5) $ f $. concatMap (\x->replicate 4 x) [3,8,3,8,14,10] |*| gain "1.2"
+
+
+d4 $ f [2,3,8,10] |*| insPsr
+
+d5 $ rl (1/5) $ f [10,14,15] |*| insPsr |*| gain "1.2"
+
+d1 $ unwrap $ (slowcat $ map pure [density 1, density 2, density 3])
+<*> (pure $ sound "bd sn")
+
+d1 $ do 
+
+
+f <- slowcat $ map pure [density 1, density 2, density 3, rev]
+        f $ sound "bd sn:2"
+
+d1 $ do f <- slow 4 $ listToPat [density 1, density 2, density 3, rev]
+        f $ sound "bd sn:2"
+
+d1 $ silence
+
+d1 $ do f <- slow 4 $ every 2 rev $ listToPat [density 1, density 2, density 3,
+rev] ; f $ sound "bd sn:2"
+
+hush
+
+
+
+d2 $ sound "arpy*128" # speed ((*2) <$> sine)
+
+d1 $ brak $ sound "[feel feel:3, hc:3 hc:2 hc:4 ho:1]"
+
+d2 $ ("0.5 0.25") <~ sound ("bd ~ sn ~ bd  bd ~ sn")
+
+d1 $ "<0 0.5 0.125>" <~ sound ("arpy arpy:1 arpy:2 arpy:3")
+
+d1 $ sound $ scramble 3 "bd sn hh"
+
+d1 $ smash 3 [2,3,4] $ sound "ho ho:2 ho:3 hc"
+
+import qualified Sound.Tidal.Scales as Scales
+
+d1 $ n (toScale [0, 4, 7] "0 1 2 3") # sound "supermandolin"

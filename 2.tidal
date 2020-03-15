@@ -1,0 +1,34 @@
+# Samples from my phone (DrumPadBeats, Caustic, etc.)
+
+~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/DrumPadBeats/minima/SongZip")
+
+~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/DrumPadBeats/t5d/Scene/")
+
+~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/DrumPadBeats/h/Scene/")
+
+~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/beatbox/Bigbeard Drums/REALDRUMS")
+
+# =============================================================================
+
+bps (130/60)
+
+d1 $ striate 1 $ loopAt 4 $ sound "songzip:5"
+
+d1 $ every 2 (density 2) $ degradeBy 0.5 $ sound "songzip:0"
+|=| cut "1"
+|=| gain "1.2"
+|=| speed "{1 1 1 1 2}%4"
+
+# =============================================================================
+
+d1 $  loopAt 8 $ sound "realdrums" 
+
+
+bps(130/60)
+
+d2 $ sound "bd sn*2,ch/3" 
+
+hush
+
+
+d1 $ slow 4 $ sound "realdrums:4"

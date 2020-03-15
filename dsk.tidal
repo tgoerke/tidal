@@ -1,0 +1,74 @@
+# Working with (short & long) samples
+# kn00t 05/18
+# via http://blog.tidalcycles.org/faq/
+# How Can Custom Samples be Used?
+# Posted by sfradkin on 10th December 2017 
+#
+# load samples in Superdirt (sclang) 
+# sc3> ~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/dskmusic/DirectWave/DSK Music - Analog Synth sounds/Synths/*")
+# sc3> ~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/dskmusic/DirectWave/DSK_Music_-_Analog_Synth_sounds/Synths/*")
+# TODO: Fix problem with whitespace in dirnames; maybe via hardlinks?
+# via https://superuser.com/questions/1323011/how-to-replace-whitespace-with-underscore-in-all-filenames  
+# mint@tri:~/Dokumente/Samples/dskmusic/DirectWave $ while IFS='' read -r -d '' fname ; do    nname="${fname##*/}";  echo  mv -v -n "${fname}"  "${fname%/*}/${nname//[[:space:]]/_}"; done < <(find "$(pwd)"  -name "* *" -type d  -print0)
+# or see support for sample banks https://github.com/tidalcycles/Tidal/issues/231
+#
+
+d1 $ sound (s 'classic_lead' (run 100))
+
+d1 $ sound "a_dark_piano"
+
+d1 $ s "classic_lead" n 10
+
+d1 $ run 10  $ sound "doing"
+
+d1 $ run 4 # sound "doing:4 chinesse:1"
+
+hush 
+
+d1 $ sound "consequence:6"
+
+d1 $ sound (fit' 1 2 "0 1" "1 0" "doing hh sn hh chinesse*3 hh")
+
+d2 $ sound "pulse" # speed ((*2) <$> sine)
+
+# like a pad
+
+d1 $ every 4 (slow 2) $ n (run 8) # sound "doing" # up "5 3 8 3 5 5 8 1"
+
+hush 
+
+d1 $ chop 16 $ sound (samples "doing" (run 16))
+
+################################################################################
+# via  http://ask.tidalcycles.org/question/245/looping-long-samples-accurately/
+################################################################################
+
+d1 $ sound "doing" # unit "c" # sine1 speed
+
+d1 $ loopAt 2 $ sound "doing:1"
+
+d1 $ (chop 8 $ loopAt 8 $ sound "doing") # delay sine1
+
+################################################################################
+# there is also work by kindohm on that: https://github.com/kindohm/tidal-time-samples
+################################################################################
+
+bps (170/120)
+
+let steps = take 16 [0,0.0625..]
+
+d1 $ every 2 (density 2) $ degradeBy 0.5 $ sound "doing"
+|=| cut "1"
+|=| gain "1.2"
+|=| begin (choose steps)
+|=| speed "{1 1 1 1 2}%4"
+
+
+bps (170/120)
+
+d1 $ loopAt 2 $ sound "doing"
+|=| gain "1.0"
+
+hush
+
+

@@ -1,0 +1,11 @@
+# 2014-12-21, As we're using just one user, multiuser isn't really necessary.
+# multiuser on
+hardstatus alwayslastline '%{= G}[ %{G}%H %{g}][%= %{= w}%?%-Lw%?%{= R}%n*%f %t%?%{= R}(%u)%?%{= w}%+Lw%?%= %{= g}][%{B}%Y-%m-%d %{W}%c %{g}]'
+
+#screen -t jackd 0 jackd -d alsa -dhw:USB                                                                                                                  
+screen -t jackd 0 jackd -d alsa -dhw:CODEC                                                                                                                  
+screen -t dirt 1 bash -c "sleep 3; cd ~/tidal/Dirt; ./dirt"
+
+screen -t sclang 2 sclang
+
+screen -t bash 3 bash

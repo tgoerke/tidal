@@ -1,0 +1,53 @@
+# messing with scales & chords
+# needs clean-up
+# kn00t 4/18
+
+import Sound.Tidal.Scales
+
+d1 $ slow 2 $ n (toScale egyptian "0 .. 15") # sound "arpy"
+
+# eval to print the scale in the tidal biffer
+
+minPent
+
+major
+
+import qualified Sound.Tidal.Scales as S
+
+import qualified Sound.Tidal.Chords as Ch
+
+import Sound.Tidal.Context
+
+import Sound.Tidal.Scales
+
+import Sound.Tidal.Chords
+
+
+d1 $ up "0 1 2 3 4 5 6 7 8 9 10 11" # sound "arpy"
+
+d1 $ n (toScale [0, 4, 7] "0 1 2 3") # sound "arpy"
+
+d1 $ n (toScale S.dorian (run 8)) # sound "arpy"
+
+hush
+
+d1 $ C.enchord [C.major C.minor] "c g" "0 1"
+
+d1 $ n (Ch.enchord [Ch.major, Ch.minor, Ch.minor7] "c g e f*2" "2") # sound "arpy"
+
+
+# via https://github.com/yaxu/tidal-workshop/blob/master/summerschool.tidal
+# chord names:
+https://github.com/tidalcycles/Tidal/blob/master/Sound/Tidal/Chords.hs
+
+-- import the chords:
+import qualified Sound.Tidal.Chords as Ch
+
+
+-- or make an abstraction:
+let chs = Ch.enchord [Ch.major, Ch.minor, Ch.minor7, Ch.sus4]
+
+d1 $ n (chs "c g e f*2" "0 2") # sound "arpy"
+
+hush
+

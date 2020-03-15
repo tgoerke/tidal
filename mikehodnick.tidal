@@ -1,0 +1,70 @@
+#----------------------------------------------------
+# Jan 2018 kn00t
+# walking through the interview
+# http://blog.tidalcycles.org/kindohm-interview/
+#----------------------------------------------------
+
+# stacking 
+
+# transformation on pattern level (e.g. "ch")
+d1 $ stack [
+sound "bd(3,8)",
+(0.5 <~) $ sound "ch",
+every 2 (density 4) $ (0.25 <~) $ sound "arpy*128"
+]
+
+d2 $ stack [
+sound "hh(2,8)"
+]
+
+hush
+
+# transformation on stack level (e.g. reversing and chop'ing a stack)
+
+d1 $ every 3 (rev) $ every 4 (chop 4) $ stack [
+sound "bd(3,8)",
+(0.5 <~) $ sound "hh",
+every 2 (density 2) $ (0.25 <~) $ sound "arpy*2"
+]
+
+# moving time around...
+
+d1 $ every 3 (0.25 <~) $ every 4 (0.25 <~) $ sound "bd bd sn sn"
+
+# equiv to:
+
+d1 $ foldEvery [3,4] (0.25 <~) $ sound "bd bd sn sn"
+
+hush
+
+# cycling through audio effects
+
+d1 $ 
+every 3 (0.5 <~) $
+every 4 (chop 4) $
+every 5 (# speed "1.5 -1 0.5") $
+every 6 (# crush (scale 3 8 $ slow 2 tri)) $
+every 7 (rev) $
+                stack [ sound "bd(3,8)", sound "hh*2" ]
+
+
+# predefined patterns used by more than one instrument
+# (does not work fo rme, explore later ...)
+let pat = "{1 ~ ~ 1 ~ 1*1 1 ~ ~ 1 1}%8"
+
+d1 $ gain (pat) # s "bd"
+d2 $ gain (pat) # s "arpy"
+
+
+# kindohm custom functions:
+
+let rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
+
+let brakk samps = ((|=| unit "c") . (|=| speed "8")) $ sound (samples samps (irand 30))
+
+hush
+
+# kindohm mentions that he shares his (tidal) compositions on github
+# I checked https://github.com/kindohm/risc-chip
+# where he used tidal-midi and external gear
+
