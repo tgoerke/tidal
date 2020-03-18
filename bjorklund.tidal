@@ -1,6 +1,0 @@
--- Euclidean patterns in tidal
--- https://tidalcycles.org/patterns.html#bjorklund
-
-d1 $ sound "bd(2,6)"
-
-d1 silence

@@ -1,0 +1,8 @@
+2.tidal:~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/DrumPadBeats/minima/SongZip")
+2.tidal:~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/DrumPadBeats/t5d/Scene/")
+2.tidal:~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/DrumPadBeats/h/Scene/")
+2.tidal:~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/beatbox/Bigbeard Drums/REALDRUMS")
+dsk.tidal:# sc3> ~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/dskmusic/DirectWave/DSK Music - Analog Synth sounds/Synths/*")
+dsk.tidal:# sc3> ~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/dskmusic/DirectWave/DSK_Music_-_Analog_Synth_sounds/Synths/*")
+hexloops.tidal:# sc3> ~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/HexLoops.House.FREE.Drops/Kit02_C_128bpm")
+hexloops.tidal:# sc3> ~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/TASTERS/*")

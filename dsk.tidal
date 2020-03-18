@@ -1,17 +1,5 @@
 # Working with (short & long) samples
 # kn00t 05/18
-# via http://blog.tidalcycles.org/faq/
-# How Can Custom Samples be Used?
-# Posted by sfradkin on 10th December 2017 
-#
-# load samples in Superdirt (sclang) 
-# sc3> ~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/dskmusic/DirectWave/DSK Music - Analog Synth sounds/Synths/*")
-# sc3> ~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/dskmusic/DirectWave/DSK_Music_-_Analog_Synth_sounds/Synths/*")
-# TODO: Fix problem with whitespace in dirnames; maybe via hardlinks?
-# via https://superuser.com/questions/1323011/how-to-replace-whitespace-with-underscore-in-all-filenames  
-# mint@tri:~/Dokumente/Samples/dskmusic/DirectWave $ while IFS='' read -r -d '' fname ; do    nname="${fname##*/}";  echo  mv -v -n "${fname}"  "${fname%/*}/${nname//[[:space:]]/_}"; done < <(find "$(pwd)"  -name "* *" -type d  -print0)
-# or see support for sample banks https://github.com/tidalcycles/Tidal/issues/231
-#
 
 d1 $ sound (s 'classic_lead' (run 100))
 
@@ -40,8 +28,6 @@ hush
 d1 $ chop 16 $ sound (samples "doing" (run 16))
 
 ################################################################################
-# via  http://ask.tidalcycles.org/question/245/looping-long-samples-accurately/
-################################################################################
 
 d1 $ sound "doing" # unit "c" # sine1 speed
 
@@ -49,8 +35,6 @@ d1 $ loopAt 2 $ sound "doing:1"
 
 d1 $ (chop 8 $ loopAt 8 $ sound "doing") # delay sine1
 
-################################################################################
-# there is also work by kindohm on that: https://github.com/kindohm/tidal-time-samples
 ################################################################################
 
 bps (170/120)

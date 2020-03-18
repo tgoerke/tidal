@@ -1,0 +1,46 @@
+
+1 Tribute
+based on short samples & pattern magic
+1.tidal
+2.tidal
+benjaminbrown.tidal
+
+2 Do Robots Cry
+based on striating long samples (dsk, hexloops, tasters, drumpadbeats)
+dsk.tidal
+hexloops.tidal
+
+3 I Know All About Eulalie
+based on stacking & effects
+mikehodnick.tidal
+
+4 Kn00tsM00ds
+based on scales patterns & guitar samples
+scales.tidal
+shruthi.tidal (but without midi)
+
+5 Vocalist
+based on vocal samples
+yaxu-vocal.tidal
+
+6 Epilogue
+based pattern sequences & lessons learned
+patterns.tidal
+sequences.tidal
+
+Click on ‘stream’ on the left hand side, and select ‘custom streaming server’ for stream type.
+Then for the URL, paste in this while you’re testing: rtmp://toplap.org:5050/algotest
+
+When it’s your time to play, you’ll need to change the URL to: rtmp://toplap.org/eulerroom/ 
+
+For the stream key, put in a short name for yourself. This can be anything, e.g. if you are nellie the elephant, put in nellie
+
+
+https://www.madskjeldgaard.dk/sox-tutorial-split-by-silence/
+
+sox infile.wav outfile.wav silence 1 0.1 1%
+
+To trim the ending as well, we basically repeat the parameters like this:
+
+sox infile.wav outfile.wav silence 1 0.1 1% 1 0.1 1%
+
