@@ -1,3 +1,22 @@
+-- https://tidalcycles.org/patterns.html
+-- by kn00t 2017/03
+
+d2 $ sound "[bd bd bd, sn cp sn cp]"
+
+d2 $ silence
+
+d3 $ gain "1.2 0.8 0.5 0.7" # sound "can"
+
+d1 $ every 4 (density 2) $ every 4 (rev) $ every 8 (slow 2)  
+
+d1 $ every 2 (rev) $ sound "[bd*2, sn hc sn hc, arpy arpy, ho]" 
+   # gain "[1 0.8 1 1.2]/4"
+
+d3 $ every 2 (|+| speed "1") $ sound "arpy*4" |=| speed "1" 
+
+d1 $  every 2 (|+| up "4") $ sound "arpy*4" |=| up "0 2 4 5"
+
+hush
 d1 $ stack [
 sound "bd:10 sn:2" # speed "1" # vowel "[a o]/2",
 degradeBy 0.1 $ sound "casio casio:4 casio:2" 
@@ -109,3 +128,76 @@ d1 $ smash 3 [2,3,4] $ sound "ho ho:2 ho:3 hc"
 import qualified Sound.Tidal.Scales as Scales
 
 d1 $ n (toScale [0, 4, 7] "0 1 2 3") # sound "supermandolin"
+
+
+-- orig by yaxu http://slab.org/vocal/
+-- remixed by kn00t 2017/03/20
+
+d1 $ slow 4 $ sound "bd hh sn [bd ho sn hh sn]/4"
+
+d2 $ slow 2 $ sound "- bd - sn sn [bd bd bd hh sn*4]/64"
+
+let x = density 4 $ striate' 8 0.75 $ sound (slow 4 $ "[bd bd/4] [ht mt lt]") in
+d2 $ stack [every 3 rev $ every 4 (0.75 <~) x
+            |+| pan "0.2",
+            every 4 rev $ every 3 (0.5 <~) x
+            |+| pan "0.8"
+           ]
+  |+| speed "8"
+  |+| shape "0.5"
+
+d2 silence 
+
+d4 $ every 8 (density 8) $ echo 3  $ brak $ every 4 (0.25 <~) $ sound "[future,odx]"
+  |+| shape "0.1"
+
+hush 
+
+d4 silence
+
+d4 $ sound "jazz wind*4"
+
+let perc = 0.2 in
+d3 $ slow 2 $ whenmod 10 12 (echo 0.25) $ density 2 $ sound (pick <$> "~ [wind wobble]" <*> (slow 5 $ run 24))
+  |+| slow 16 ((begin $ (*(1-perc)) <$>  sinewave1) |+| (end $ (+perc) <$> sinewave1))
+  |+| speed (slow 2 "0.75 0.7")
+  |+| pan "0.6"
+  |+| shape "0.6"
+
+-- choir
+let perc = 0.2 in
+d4 $ slow 3 $ every 2 (rev) $ whenmod 10 12 (echo 0.25) $ density 2 $ sound (pick <$> "~ [sugar rave2]*3" <*> (slow 10 $ run 16))
+  |+| slow 16 ((begin $ (*(1-perc)) <$>  sinewave1) |+| (end $ (+perc) <$> sinewave1))
+  |+| speed "0.75"
+  |+| pan "0.4"
+  |+| vowel "o"
+
+hush
+
+d6 $ whenmod 10 12 (density 2) $ whenmod 12 4 (rev) $ slow 2 $ sound "[futuremono]*3 [odx/3]"
+
+
+d7 $ whenmod 6 4 (0.25 <~) $ every 4 (density (3/2)) $ slow 2 $ sound "[jungle/2]*2 [jungle/3]*2"
+  |+| shape "0.7"
+
+
+d7 $ (whenmod 2 4 ((|+| speed "0.9") . rev) $ every 2 (0.25 <~) $ sound "odx [sn/2 ~ sn/2]")
+
+d3 silence
+
+
+d8 $ ((slow 8 $ striate 12 $ sound "[diphone2/1 ~ diphone2/3]*4")
+  |+| (slow 4 $ speed ((*) <$> "[2 1] 1.5" <*> ((+0) <$> ((+0.4) <$> (slow 4 $ sinewave1))))))
+  |+| vowel "i"
+
+d9 $ slow 2 $ sound "[[odx]*4]/3 [[odx]*4 [odx]*8]/3"
+  |+| speed "1"
+  |+| cutoff "0.04"
+  |+| resonance "0.7"
+  |+| shape "0.8"
+
+-- decrease and hush it ;)
+bps 4
+
+hush
+

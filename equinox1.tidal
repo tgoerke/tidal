@@ -1,3 +1,16 @@
+#-----------------------------------------
+# Jan 2017
+# kn00t 2017 July
+# kn00t 2020 March Equinox 
+
+d1 $ sound "arpy*8" # vowel "a i a i a i e o o o o o o o" # pan sine 
+
+d2 $ sound "bd*2 sn"
+
+d3 $  slow 4 $ sound "arp*8 arp"
+
+hush
+
 # =============================================================================
 
 bps (130/60)
@@ -22,3 +35,10 @@ hush
 d1 $ slow 4 $ sound "realdrums:4"
 
 
+# =====================================================
+
+d1 $ sound "bd sn" "1 2 3 4"
+
+d1 $ silence
+
+hush
