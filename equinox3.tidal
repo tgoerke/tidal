@@ -10,7 +10,7 @@
 # transformation on pattern level (e.g. "ch")
 d1 $ stack [
 sound "bd(3,8)",
-(0.5 <~) $ sound "ch",
+(0.5 <~) $ sound "hh",
 every 2 (density 4) $ (0.25 <~) $ sound "arpy*128"
 ]
 
@@ -51,11 +51,14 @@ every 7 (rev) $
 
 # predefined patterns used by more than one instrument
 # (does not work fo rme, explore later ...)
-let pat = "{1 ~ ~ 1 ~ 1*1 1 ~ ~ 1 1}%8"
+let pat = "{1 ~ ~ 1 ~ 1*1 1 ~ ~ 1 1}%8" in
+d2 $ gain (pat) # s "bd"
 
-d1 $ gain (pat) # s "bd"
-d2 $ gain (pat) # s "arpy"
+let pat = "{1 0.5 ~ 1*1 ~ 2 ~ ~ 1}%4" in
+d2 $ stack [ gain (pat) # s "bd sn", gain (pat) # s "arpy*8" ]
 
+
+############ T H E  E N D ###################################
 
 # kindohm custom functions:
 

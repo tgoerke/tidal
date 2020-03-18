@@ -1,0 +1,87 @@
+d1 $ sound "bd*2 sn/8,hh*8"
+
+d2 $ fast 2 $  loopAt 6 $ stack [ sound "realdrums:3", sound "realdrums:2" ]
+
+d1 $ sound "bd sn*2,ch/3"
+
+d3 $ every 4 (density 16) $ degradeBy 0.5 $ sound "songzip:3"
+|=| cut "1"
+|=| gain "1.0"
+|=| speed "{2 1 0.5 0.25 1 2}%4"
+
+d3 $ sound "bd sn" "1 2 3 4"
+
+d3 $ silence
+
+
+===========================================================0
+
+d1 $ stack [
+sound "bd(3,8)",
+(0.25 <~) $ sound "~ hh*4",
+every 2 (density 4) $ (0.75 <~) 
+$ sound "arpy*128 arpy*64 arpy*8" # gain "0.9"
+]
+
+d2 $ stack [
+sound "hh(2,8)",
+every 4 (density 2) $ sound "bd bd sn sn"
+]
+
+d3 $ every 3 (0.25 <~) $ every 4 (0.25 <~) $ sound "cp hh cp hh"
+
+d4 $ 
+every 2 (0.25 <~) $ 
+every 2 (chop 4) $
+every 2 (# speed "1.5 -1 0.5") $
+every 2 (# crush (scale 3 8 $ slow 2 tri)) $
+stack [ sound "bd(3,8)", sound "arpy*3" ]
+
+
+d3 $ silence 
+
+let pat = "{1 0.5 ~ 1*1 ~ 2 ~ ~ 1}%4" in
+d3 $ stack [ gain (pat) # s "bd sn", gain (pat) # s "arpy*8" ]
+
+let pat = "bd bd" in
+d3 $ sound (pat)
+
+hush
+
+let rip a b c = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p 
+
+d1 $ (rip) $ sound "bd"
+
+
+
+===================================================================
+
+import Sound.Tidal.Scales
+
+hush
+
+(toScale egyptian "0 .. 15)
+
+minPent
+
+import qualified Sound.Tidal.Scales as S
+
+d1 $ up "0 1 2 3 4 5 6 7 8 9 10 11" # sound "arpy"
+
+d1 $ slow 2 $ n (toScale major "0 .. 15") # sound "arpy"
+
+import qualified Sound.Tidal.Scales as S
+
+import qualified Sound.Tidal.Chords as Ch
+
+import Sound.Tidal.Context
+
+d1 $ n (toScale [0,4,7] (run 8)) # sound "arpy"
+
+d2 $ sound "bd*2 hh sn hh"
+
+hush
+
+d2 $ C.enchord [Ch.major Ch.minor] "c g" "0 1" # sound "arpy"
+
+d1 $ n (Ch.enchord [Ch.major, Ch.minor, Ch.minor7] "c g e f*2" "2") # sound "arpy"

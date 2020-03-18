@@ -8,4 +8,6 @@ screen -t dirt 1 bash -c "sleep 3; cd ~/tidal/Dirt; ./dirt"
 
 screen -t sclang 2 sclang
 
-screen -t bash 3 bash
+screen -t calf 3 bash -c "calfjackhost  vintagedelay ! filter ! analyzer ! "
+
+screen -t bash 9 bash
