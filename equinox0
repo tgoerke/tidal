@@ -51,3 +51,8 @@ To trim the ending as well, we basically repeat the parameters like this:
 
 sox infile.wav outfile.wav silence 1 0.1 1% 1 0.1 1%
 
+
+
+mp3splt -o %n -s OpenGuitarTest01.mp3 
+for f in $(seq 1 7); do mp3-decoder $f.mp3 --wav $f.wav; done
+

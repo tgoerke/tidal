@@ -5,3 +5,5 @@
 ~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/dskmusic/DirectWave/DSK Music - Analog Synth sounds/Synths/*")
 ~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/HexLoops.House.FREE.Drops/Kit02_C_128bpm")
 ~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/TASTERS/*")
+~dirt.loadSoundFiles("/home/mint/Dokumente/Samples/fer")
+
