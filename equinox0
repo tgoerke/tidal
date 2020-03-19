@@ -51,3 +51,24 @@ To trim the ending as well, we basically repeat the parameters like this:
 
 sox infile.wav outfile.wav silence 1 0.1 1% 1 0.1 1%
 
+
+
+or with mp3splt
+
+mp3splt -s OpenGuitarTest01.mp3 -o @n
+
+
+Stuff to try
+
+
+do
+	xFadeIn 1 12 $ s ""
+	xfadeIn 2 12 $ s ""
+
+
+by Shihpin the Livecoder 
+
+
+also try https://tidalcycles.org/index.php/sometimes
+and once
+
