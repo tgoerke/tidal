@@ -1,6 +1,3 @@
-#----------------------------------------------------
-# kindohm 2017 http://blog.tidalcycles.org/kindohm-interview/
-# kn00t 2018 Jan
 # kn00t 2020 March Equinox
 # 
 #----------------------------------------------------
@@ -47,28 +44,4 @@ every 5 (# speed "1.5 -1 0.5") $
 every 6 (# crush (scale 3 8 $ slow 2 tri)) $
 every 7 (rev) $
                 stack [ sound "bd(3,8)", sound "hh*2" ]
-
-
-# predefined patterns used by more than one instrument
-# (does not work fo rme, explore later ...)
-let pat = "{1 ~ ~ 1 ~ 1*1 1 ~ ~ 1 1}%8" in
-d2 $ gain (pat) # s "bd"
-
-let pat = "{1 0.5 ~ 1*1 ~ 2 ~ ~ 1}%4" in
-d2 $ stack [ gain (pat) # s "bd sn", gain (pat) # s "arpy*8" ]
-
-
-############ T H E  E N D ###################################
-
-# kindohm custom functions:
-
-let rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
-
-let brakk samps = ((|=| unit "c") . (|=| speed "8")) $ sound (samples samps (irand 30))
-
-hush
-
-# kindohm mentions that he shares his (tidal) compositions on github
-# I checked https://github.com/kindohm/risc-chip
-# where he used tidal-midi and external gear
 

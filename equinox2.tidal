@@ -1,105 +1,57 @@
-# Working with (short & long) samples
-# kn00t 05/18
-# kn00t 2020 March Equinox
-
-d1 $ sound (s 'classic_lead' (run 100))
-
-d1 $ sound "a_dark_piano"
-
-d1 $ s "classic_lead" n 10
-
-d1 $ run 10  $ sound "doing"
-
-d1 $ run 4 # sound "doing:4 chinesse:1"
-
-hush 
-
-d1 $ sound "consequence:6"
-
-d1 $ sound (fit' 1 2 "0 1" "1 0" "doing hh sn hh chinesse*3 hh")
-
-d2 $ sound "pulse" # speed ((*2) <$> sine)
-
-# like a pad
-
-d1 $ every 4 (slow 2) $ n (run 8) # sound "doing" # up "5 3 8 3 5 5 8 1"
-
-hush 
-
-d1 $ chop 16 $ sound (samples "doing" (run 16))
-
-################################################################################
-
-d1 $ sound "doing" # unit "c" # sine1 speed
-
-d1 $ loopAt 2 $ sound "doing:1"
-
-d1 $ (chop 8 $ loopAt 8 $ sound "doing") # delay sine1
-
-################################################################################
-
-bps (170/120)
-
-let steps = take 16 [0,0.0625..]
-
-d1 $ every 2 (density 2) $ degradeBy 0.5 $ sound "doing"
-|=| cut "1"
-|=| gain "1.2"
-|=| begin (choose steps)
-|=| speed "{1 1 1 1 2}%4"
 
 
-bps (170/120)
+d1 $ every 2 (rev) $ sound "[bd/3 bd,sn cp sn,hc]"
 
-d1 $ loopAt 2 $ sound "doing"
-|=| gain "1.0"
-
-hush
+d1 $ every 2 (rev) $ sound "[bd bd,sn cp sn, hc]" 
+     # gain "[1 0.8 1 1.2]/4]"
 
 
-################################################################
+t2 (anticipateIn 4) $ sound "jvbass(5,8)"
 
-d1 $ striate 3 $ sound "kit02_c_128bpm:0"
+d2 $ sound "[[rave rave] rave]"
+|+| speed "0.1"
 
-d2 $  stack [
-degradeBy 0.1 $ slow 4 $ (striate 16  $ sound "kit02_c_128bpm")
-|+| speed "[1 2, [1.25 1.25 2]*3]*2"
-|+| delay "0.4",
-sound "bd cp [~ bd] cp",
-sound "hh*8"
+;) tnx yaxu 
+
+t2 (xfadeIn 8) $ silence
+
+d2 $ sound "arpy*128" # speed (sine*4)
+
+
+d3 $ stack [
+sound "bd:10" # speed "1" # vowel "[a o o i]/2",
+degradeBy 0.5 $ sound "casio kurt casio:4 casio:2"
 ]
 
-bps (128/60)
+d3 $ sound (fit' 1 2 "0 1 " "1 0 " "bd sn")
 
-d2 $ stack [
-slow 16 $ striate' 128 (1/60) $ sound "kit02_c_128bpm"
-|+| speed "[1 2 4, [1.25 1.25 2]*3]*4"
-|+| delayfeedback "0.5" |+| delaytime "0.3",
-sound "bd cp [~ bd] cp",
-sound "hh*8"
+d3 $ stack [
+every 2 (|+| speed "1") $ sound "arpy*4" |=| up "0 3 5 19",
+sound "[bd*2 sn,cp/4]"
 ]
 
-hush
 
-#==============================================================================
-# chemical_big_beats (5) 
-# cold_fusion_technologic (5) 
-# drumnbass_delights (5) 
-# hiphop_riddims (5) 
-# on_a_latin_tip (5) 
-# the_electro_age (5)
+
+d4 $ n (toScale [0, 4, 7] "0 1 2 3") # sound "arpy"                  
+d4 $ n (toScale [0, 5, 7] (run 8) )  # sound "arpy"
+
 
 hush
 
-d1 $ striate 16 $ sound "chemical_big_beats:5"
+d1 $ slow 4 $ sound "bd hh sn [bd ho sn hh sn]/4"
 
-d1 $ striate 256 $ sound "hiphop_riddims:4"
-|+| speed "[0.5 0.3 1.5, [1.5 1.25 4]*3 4]*4"
-|+| delayfeedback "1.5" |+| delaytime "1.5"
+d2 $ slow 2 $ sound "- bd - sn sn [bd bd bd hh sn*4]/64"
 
-d2 $ striate 32 $ sound "hiphop_riddims:0"
-|+| speed "[1 2 3, [1.25 1.25 2] 4*4]"
+d4 $ sound "jazz wind*4"
 
-d1 $ striate 160 $ sound "the_electro_age:3"
+
+d9 $ slow 2 $ sound "[[odx*8]/2 [odx]*4 [odx]*8]/3 ]"
+|+| speed "1"
+
+d8 $ slow 8 $ striate 12 $ sound "[diphone/1 ~ diphone2/3]*4" # gain "1.1"
+|+| vowel "a i*16 o u*8"
+
+d1 $ n (run 4) # s "drum"
+
 
 hush
