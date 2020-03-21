@@ -1,0 +1,74 @@
+
+
+d2 $ sound "pad" 
+
+d2 $ silence
+
+d1 $ sound "bd*2 sn"
+
+d3 $ slow 4 $ sound "arp*8 arp" # gain "0.8"
+
+d2 $ slow 2 $ striate 1 $ loopAt 4 $ sound "songzip:5" # gain "0.7" 
+
+d4 $ every 2 (density 2) $ degradeBy 0.5 $ sound "songzip:1"
+|=| cut "1"
+|=| gain "0.7"
+|=| speed "{1 1 1 2}%4"
+
+d4 $ silence
+
+d5 $ slow 8 $ striate 64 $ s "scene" # n "0" # gain "0.8" 
+   # lpf (slow 16 $ sine*5000)
+
+d2 $ sound "jvbass(5,8)"
+
+t2 (xfadeIn 8) $ silence
+
+d2 $ sound "[[rave rave] rave]"
+|+| speed "1"
+|+| gain "1"
+
+d4 $ stack [
+slow 2 
+$ sound "[[odx*2]/2 [odx]*4 [odx]*8]/3]" # lpf "1000 100 10 500" |+| speed "1",
+(0.25 <~) $ sound "[hh,cp*2, bd*2 bd sn sn]"
+]
+
+
+
+t4 (xfadeIn 16) $ silence
+
+# Guitar built and player by fer. Thanks Fer!!!!!!!
+
+d1 $ slow 16 $ striate 64 $ sound "fer"
+|+| speed "1,[1,0.2,1]" 
+|+| gain "0.8"
+
+d2 $ slow 8 $ striate 128 $ s "on_latin_tip" # n "0" # gain "0.9"
+
+
+d3 $ stack [
+slow 8 $ chop 8 $ sound "the_electro_age:0" # gain "0.8",
+slow 8 $ striate 128 $ s "the_electro_age:1" # n (run 8)
+]
+
+d1 $ silence
+
+d3 $ striate 16 $ sound "kit02_c_128bpm" # lpf "2000" # gain "0.7"
+|+| speed "[1,2,4,1,1.25 2]*3]" # up "1"
+
+d2 $ sound "odx*2"
+
+
+d4 $ n (toScale [0, 4, 7] "0*2 1 2 3") #  sound "arpy"
+
+
+hush
+
+###  puh 
+
+Thanks for listening
+
+graphics by Moritz made in Scratch :)))))))))))))))))))))))
+
+

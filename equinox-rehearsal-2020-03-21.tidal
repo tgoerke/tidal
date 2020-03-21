@@ -1,0 +1,33 @@
+d1 $ sound "bd"
+
+d8 $ slow 8 $ striate 12 $ sound "[diphone/1 ~ diphone2/3]*4" # gain "1.1"
+|+| vowel "a i*16 o u*8"
+
+t1  (xfadeIn 16) $  silence
+
+d1 $ slow 8 $ striate 16 $ sound "chemical_big_beats:5" # up (1)
+
+
+hush
+
+t1 (xfadeIn 16) $ silence
+
+d2 $ stack [
+slow 8 $ striate 16 $ sound "the_electro_age:3" # up (-2),
+slow 4 $ striate 8 $ sound "hiphop_riddims:4" 
+] # lpf (slow 8 $ saw*5000)
+
+d3 $ sound "jvbass(5,8)" # lpf (slow 8 $ sine*5000) # gain "1.1"
+
+t1 (xfadeIn 8) $ silence
+
+d5 $ sound "arpy*128" # speed (sine*4)
+
+d4 $ s "odx*2"
+
+d1 $ sound "[[rave rave] rave]"
+|+| speed "1" # gain "1"
+
+d5 $ n (toScale [0, 3, 7] (run 8)) 
+         # sound "arpy" # lpf "1000 100 2000 10 3000 1000" # up (3)
+

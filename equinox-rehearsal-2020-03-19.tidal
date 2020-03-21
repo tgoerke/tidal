@@ -1,0 +1,88 @@
+
+d1 $ sound "pad"
+
+d1 $ silence
+
+d2 $ sound "bd*2 sn"
+
+d3 $ slow 4 $ sound "arpy*8 arp"
+
+d1 $ striate 1 $ loopAt 4 $ sound "songzip:5" 
+
+d4 $ every 2 (density 2) $ degradeBy 0.5 $ sound "songzip:0"
+|=| cut "1"
+|=| gain "1"
+|=| speed "{1 1 1 1 2}%4"
+
+d1 $ slow 2 $ loopAt 8 $ sound "realdrums:3"
+
+d2 $ sound "bd sn*2,ch/3"
+
+hush
+
+d3 $ sound "bd sn" "1 2 3 4"
+
+
+d1 $ every 2 (rev) $ sound "[bd/3 bd,sn cp sn,hc]"
+  # gain "[1 0.8 1 1.2]/4"
+
+t1 (anticipateIn 4) $ sound "jvbass(5,8)"
+
+d2 $ sound "[[rave rave] rave]"
+|+| speed "0.8" # gain "1"
+
+t2 (xfadeIn 8) $ silence
+
+d2 $ sound "arpy*128" # speed (sine*4)
+
+hush
+
+d3 $ stack [
+sound "bd:10" # speed "1" # vowel "[a e i]/2",
+degradeBy 0.5 $ sound "casio kurt casio:4 casio:2"
+]
+
+d4 $ stack [
+every 2 (|+| speed "1") $ sound "arpy*4" |=| up "0 3 5 7",
+sound "[bd*2 sn,cp/4]"
+]
+
+;)
+
+d5 $ n (toScale [0, 5, 7, 18] (run 8) ) # sound "arpy"
+
+d1 $ slow 4 $ sound "bd hh sn [bd ho hh sn]/4"
+
+d2 $ slow 2 $ sound "~ bd sn sn [bd bd bd sn*4]/64"
+
+d4 $ sound "jazz wind*4"
+
+d9 $ slow 2 $ sound "[odx*8]/2 [odx]*4 [odx]*8]/3"
+|+| speed (run 4)
+
+d8 $ slow 8 $ striate 12 $ sound "[diphone/1 ~ diphone2/3]*4" gain "1.1"
+|+| vowel "a e i*16 o u*8"
+
+d1 $ n (run 4) # s "drum"
+
+# guitar build & played by Fernando Bravo. Thanks for the samples!!!
+
+t1 (xfadeIn 16) $ slow 16 $ striate 128 $ s "fer" # n (run 3) 
+|+| speed "0.5 0.4 0.3 0.2 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9"
+
+t3 (xfadeIn 16) $ silence
+
+d2 $ slow 16 $ striate 128 $ s "on_a_latin_tip" # n (run 8) # gain "0.8"
+
+d3 $
+stack [
+slow 8 $ chop 8 $ sound "the_electro_age:0",
+slow 8 $ striate 16 $ s "the_electro_age" # n (run 8)
+]
+
+
+hush
+
+
+
+

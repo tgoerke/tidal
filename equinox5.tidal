@@ -1,9 +1,27 @@
-
 ################################################################
 
-d1 $ striate 3 $ sound "kit02_c_128bpm:0"
+d1 $ every 3 (0.25 <~) $ every 4 (0.25 <~) $ sound "[bd*2 bd sn sn]/3"
 
-d2 $  stack [
+d2 $ stack [
+sound "bd(3,8)",
+(0.5 <~) $ sound "hh",
+every 2 (density 4) $ (0.25 <~) $ sound "arpy*16 arpy*2" # gain "0.7" 
+]
+
+d4 $ sound "odx*2"
+
+d3 $ stack [
+slow 4 $ striate 16 $ sound "kit02_c_128bpm" # lpf "2000"
+|+| speed "[1,2,4,1.25 1.25 2]*3"
+|+| delayfeedback "0.5" |+| delaytime "0.3",
+sound "bd arpy:2 [~ bd] cp",
+sound "hh*8" # lpf "1000 100"
+]
+
+
+################# T H E  E N D ###########################################
+
+d1 $  stack [
 degradeBy 0.1 $ slow 4 $ (striate 16  $ sound "kit02_c_128bpm")
 |+| speed "[1 2, [1.25 1.25 2]*3]*2"
 |+| delay "0.4",
@@ -13,7 +31,7 @@ sound "hh*8"
 
 bps (128/60)
 
-d2 $ stack [
+d1 $ stack [
 slow 16 $ striate' 128 (1/60) $ sound "kit02_c_128bpm"
 |+| speed "[1 2 4, [1.25 1.25 2]*3]*4"
 |+| delayfeedback "0.5" |+| delaytime "0.3",
@@ -33,15 +51,17 @@ hush
 
 hush
 
-d1 $ striate 16 $ sound "chemical_big_beats:5"
+d1 $ slow 16 $ striate 16 $ sound "chemical_big_beats:5"
 
-d1 $ striate 256 $ sound "hiphop_riddims:4"
+d1 $ slow 8 $ striate 8 $ sound "hiphop_riddims:4"
 |+| speed "[0.5 0.3 1.5, [1.5 1.25 4]*3 4]*4"
 |+| delayfeedback "1.5" |+| delaytime "1.5"
 
-d2 $ striate 32 $ sound "hiphop_riddims:0"
+d2 $ slow 32 $ striate 32 $ sound "hiphop_riddims:0"
 |+| speed "[1 2 3, [1.25 1.25 2] 4*4]"
 
-d1 $ striate 160 $ sound "the_electro_age:3"
+d1 $ slow 16 $ striate 160 $ sound "the_electro_age:3"
 
 hush
+
+

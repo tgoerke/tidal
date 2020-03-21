@@ -1,0 +1,67 @@
+d1 $ sound "pad" # gain "0.6"
+
+d1 $ silence 
+
+
+d2 $ sound "bd*2"
+
+d1 $ slow 2 $ sound "arpy*8" # gain "0.8" # vowel "a e i o o o o o o  i i i i " # pan sine
+
+d3 $ striate 1 $ loopAt 4 $ sound "songzip:5" # gain "0.9"
+
+
+d4 $ every 2 (density 2) $ degradeBy 0.5 $ sound "songzip:0"
+|=| cut "1"
+|=| gain "0.9"
+|=| speed "{1 1 1 1 1 2}%4"
+
+
+d3 $ slow 8 $ striate 64 $ s "scene" # n "0" # lpf "10000 1000 100 10"
+|=| speed "{1 0.5 1 3}%3"
+
+t9 (xfadeIn 8) $ silence
+
+t3 (anticipateIn 4) $ sound "jvbass(5,8)"
+
+d1 $ every 2 (rev) $ sound "[bd/3 bd, sn cp sn,hc]"
+   # gain "[1 0.8 1 1.2]/4]"
+
+d2 $ sound "arpy*128" # speed (sine*4)
+
+d2 $ sound "[[rave rave] rave]"
+|+| speed "1"
+
+d2 $ sound "odx*2"
+
+d2 $ silence
+
+d4 $ sound "jazz wind*4"
+
+d5 $ n (toScale [0, 4, 7] (run 8) ) # sound "arpy" # lpf "3000 1000 100 10 2000"
+
+d1 $ slow 4 $ sound "bd hh sn [bd ho sn sn]/4"
+
+d2 $ slow 4 $ sound "~ bd ~ sn sn [bd bd bd hh sn*4]/64"
+
+d9 $ slow 2 $ sound "[odx*8]/2 [odx]*4 [odx]*8]/3]"
+|+| speed (run 14) # lpf "1000 1001 1001 10 01 01"
+
+d1 $ n (run 4) # s "drum"
+
+# Guitar build & pplayed by Fer. Thanks fo the sample, fer!!!
+
+d1 $  slow 16 $ striate 128 $ s "fer" # n "0"
+|+| speed "[1]" 
+
+d2 $ slow 8 $ striate 128 $ s "on_a_latin_tip" # n (run 8) # gain "0.9"
+
+d3 $ stack [
+slow 8 $ striate 128 $ s "the_electro_age" # n (run 8) # gain "0.9",
+slow 8 $ striate 16 $ s "the_electro_age:1" # n (run 8) # gain "0.9"
+] # gain "0.8" # lpf "1000 100 10"
+
+t3 (xfadeIn 16) $ silenc
+
+###############  TN/H/A/NKS ########################
+;)
+

@@ -8,7 +8,7 @@
 d1 $ stack [
 sound "bd(3,8)",
 (0.5 <~) $ sound "hh",
-every 2 (density 4) $ (0.25 <~) $ sound "arpy*128"
+every 2 (density 4) $ (0.25 <~) $ sound "arpy*128"  # gain "0.7
 ]
 
 d2 $ stack [
@@ -28,6 +28,7 @@ every 2 (density 2) $ (0.25 <~) $ sound "arpy*2"
 # moving time around...
 
 d1 $ every 3 (0.25 <~) $ every 4 (0.25 <~) $ sound "bd bd sn sn"
+d1 $ every 3 (0.25 <~) $ every 4 (0.25 <~) $ sound "[bd*2 bd sn sn]/3"
 
 # equiv to:
 

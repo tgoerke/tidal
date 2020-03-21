@@ -22,6 +22,15 @@ d1 $ every 2 (density 2) $ degradeBy 0.5 $ sound "songzip:0"
 |=| gain "1.2"
 |=| speed "{1 1 1 1 2}%4"
 
+
+d1 $ slow 8 $ striate 64  $ s "scene" # n "0" # lpf "10000 1000 100 10"
+|=| cut "1"
+|=| gain "0.9"
+|=| speed "{1 1 1 1 2}%4"
+
+d1 $ slow 8 $ striate 8  $ s "scene2" # n "0" # lpf "10000 1000 100 10"
+
+
 # =============================================================================
 
 bps(130/60)
@@ -37,7 +46,7 @@ d1 $ slow 4 $ sound "realdrums:4"
 
 # =====================================================
 
-d1 $ sound "bd sn" "1 2 3 4"
+d1 $ sound "bd sn" 
 
 d1 $ silence
 

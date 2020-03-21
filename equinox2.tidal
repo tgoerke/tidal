@@ -6,6 +6,7 @@ d1 $ every 2 (rev) $ sound "[bd bd,sn cp sn, hc]"
      # gain "[1 0.8 1 1.2]/4]"
 
 
+====================================================
 t2 (anticipateIn 4) $ sound "jvbass(5,8)"
 
 d2 $ sound "[[rave rave] rave]"
