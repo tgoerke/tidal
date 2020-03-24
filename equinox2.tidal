@@ -21,21 +21,30 @@ d2 $ sound "arpy*128" # speed (sine*4)
 
 d3 $ stack [
 sound "bd:10" # speed "1" # vowel "[a o o i]/2",
-degradeBy 0.5 $ sound "casio kurt casio:4 casio:2"
-]
+degradeBy 0.25 $ sound "arpy synth_horns:7 casio:4 casio:2"
+] # lpf "100 110"
 
 d3 $ sound (fit' 1 2 "0 1 " "1 0 " "bd sn")
 
 d3 $ stack [
 every 2 (|+| speed "1") $ sound "arpy*4" |=| up "0 3 5 19",
 sound "[bd*2 sn,cp/4]"
+] # up (slow 64 $ tri*10) 
+
+
+d4 
+  $ stack [ 
+  n (toScale [0, 4, 7] "0 ~ ~ 1") 
+  # sound "synth_keys_ii:4"
+  # up (slow 8 $ cosine*200),
+  n (toScale [0, 6, 7] "~ ~ ~ ~") 
+  # sound "synth_keys_ii:4"
+  # up (slow 8 $ sine*200)                
 ]
 
+d4 $ n (toScale [0, 5, 7] (run 2) )  # sound "arpy" 
 
-
-d4 $ n (toScale [0, 4, 7] "0 1 2 3") # sound "arpy"                  
-d4 $ n (toScale [0, 5, 7] (run 8) )  # sound "arpy"
-
+hush
 
 hush
 
@@ -43,7 +52,7 @@ d1 $ slow 4 $ sound "bd hh sn [bd ho sn hh sn]/4"
 
 d2 $ slow 2 $ sound "- bd - sn sn [bd bd bd hh sn*4]/64"
 
-d4 $ sound "jazz wind*4"
+d4 $ sound "jazz*3/3 wind*4/2"
 
 
 d9 $ slow 2 $ sound "[[odx*8]/2 [odx]*4 [odx]*8]/3 ]"
