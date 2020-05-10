@@ -66,9 +66,26 @@ the FX respond to Prg change message 1 to 7
 
 Midi CC commands/ Prg change messages are programmed into a midi track / clip in your DAW or sequencer (Midi channel 4!) 
 
+Tidal starts counting at 0. So midichannel 4 is number 3 in tidal. 
+Just mention this because I lost some hours here and did a Ditto
+firmware upgrade that probably was not needed. All ok with my Ditto YaY.
 
+Further Reading
+===============
+https://github.com/musikinformatik/SuperDirt/issues/68  
+Making-Of "MIDI via SuperDirt"
 
-=============== Program change  ================
+http://blog.kindohm.com/posts/2018/2018-10-26-superdirt-midi/
+https://blog.tidalcycles.org/superdirt-midi/
+kindohm blog post(s)
+
+https://community.musictribe.com/t5/Musician/Ditto-x4-firmware-update-Beta-available/td-p/74799
+Some strange notes about CCs beeing ACTUAL or EFFECTIVE  (like linux uid?)
+
+https://we.lurk.org/hyperkitty/list/tidal@we.lurk.org/thread/ZXGUB5UWPN53EONUDHRV2LPYLPG4GCAG/
+gabriel and lucy on Sooperlooper integration
+
+Sending Program change (needed for Ditto FX)
 see comment by JC here: https://blog.tidalcycles.org/superdirt-midi/
 
 d1 $ s "midi" # progNum "[1 2 3]" # midicmd "program"
