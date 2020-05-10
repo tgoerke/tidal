@@ -1,0 +1,74 @@
+=== All about clock ========0
+
+d9 $ midicmd "midiClock*48" # s "midi" # midichan 3
+
+once $ midicmd "stop" # s "midi"
+
+d9 $ midicmd "start/4" # s "midi"
+
+d9 $ silence
+
+===============================
+
+d1 $ n "0 2 4 7" # s "midi"
+
+d1 $ sound "bd arpy"
+
+==============================
+
+hush
+
+d1 $ cps (120/60)
+
+d9 $ midicmd "midiClock*48" # s "midi"
+
+d9 $ midicmd "stop" # s "midi"
+
+d9 $ midicmd "start" # s "midi"
+
+
+let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,d7,d8,d10,d11,d12,d13,d14,d15,d16]
+
+
+=== All about cc  =======
+
+
+d9 $  slow 4 $ ccn "<3>" # ccv 1 # s "midi" # midichan 3
+
+d9 $ ccn 14 # ccv 1 # s "midi" # midichan 3
+
+d9 $ ccn 15 # ccv (slow 8 $ 127*sine) # s "midi" # midichan 3
+
+
+https://community.musictribe.com/t5/Musician/Ditto-X4-Midi-Control/td-p/84392
+MIDI Spec
+Responds to MIDI Channel 4 (hardcoded – can’t be changed)
+
+CC3 Looper 1 Rec/Dub/Start
+CC9 Looper 1 Stop
+CC14 Looper 1 Clear
+CC15 Looper 1 Level
+CC20 Looper 1 Hold to Store
+CC21 Looper 1 Clear Backtrack
+CC22 Looper 2 Rec/Dub/Start
+CC23 Looper 2 Stop
+CC24 Looper 2 Clear
+CC25 Looper 2 Level
+CC26 Looper 2 Hold to Store
+CC27 Looper 2 Clear Backtrack
+CC28 Decay “Level”
+CC29 All Loops Stop
+CC30 All Loops Clear
+CC31 FX On/Off
+CC85 Parallel/Serial Toggle
+
+the FX respond to Prg change message 1 to 7
+
+Midi CC commands/ Prg change messages are programmed into a midi track / clip in your DAW or sequencer (Midi channel 4!) 
+
+
+
+=============== Program change  ================
+see comment by JC here: https://blog.tidalcycles.org/superdirt-midi/
+
+d1 $ s "midi" # progNum "[1 2 3]" # midicmd "program"
