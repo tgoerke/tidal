@@ -21,6 +21,8 @@ sound "hh*8" # lpf "1000 100"
 
 ################# T H E  E N D ###########################################
 
+d8 $ silence
+
 d1 $  stack [
 degradeBy 0.1 $ slow 4 $ (striate 16  $ sound "kit02_c_128bpm")
 |+| speed "[1 2, [1.25 1.25 2]*3]*2"
@@ -32,7 +34,7 @@ sound "hh*8"
 bps (128/60)
 
 d1 $ stack [
-slow 16 $ striate' 128 (1/60) $ sound "kit02_c_128bpm"
+slow 16 $ striate' 1048 (1/60) $ sound "kit02_c_128bpm:9"
 |+| speed "[1 2 4, [1.25 1.25 2]*3]*4"
 |+| delayfeedback "0.5" |+| delaytime "0.3",
 sound "bd cp [~ bd] cp",
@@ -40,6 +42,8 @@ sound "hh*8"
 ]
 
 hush
+
+t4 (xfadeIn 32) $ silence
 
 #==============================================================================
 # chemical_big_beats (5) 
@@ -60,7 +64,7 @@ d1 $ slow 8 $ striate 8 $ sound "hiphop_riddims:4"
 d2 $ slow 32 $ striate 32 $ sound "hiphop_riddims:0"
 |+| speed "[1 2 3, [1.25 1.25 2] 4*4]"
 
-d1 $ slow 16 $ striate 160 $ sound "the_electro_age:3"
+d2 $ slow 16 $ striate 160 $ sound "the_electro_age:3"
 
 hush
 

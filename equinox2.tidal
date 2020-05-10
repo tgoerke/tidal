@@ -18,11 +18,12 @@ t2 (xfadeIn 8) $ silence
 
 d2 $ sound "arpy*128" # speed (sine*4)
 
+d3 $ silence
 
 d3 $ stack [
 sound "bd:10" # speed "1" # vowel "[a o o i]/2",
 degradeBy 0.25 $ sound "arpy synth_horns:7 casio:4 casio:2"
-] # lpf "100 110"
+] # lpf (slow 256 $ cosine*7000) 
 
 d3 $ sound (fit' 1 2 "0 1 " "1 0 " "bd sn")
 
@@ -34,13 +35,13 @@ sound "[bd*2 sn,cp/4]"
 
 d4 
   $ stack [ 
-  n (toScale [0, 4, 7] "0 ~ ~ 1") 
+  n (toScale [0, 4, 7] "0 1 2*32 3") 
   # sound "synth_keys_ii:4"
-  # up (slow 8 $ cosine*200),
-  n (toScale [0, 6, 7] "~ ~ ~ ~") 
+  # up (slow 8 $ cosine*500),
+  n (toScale [0, 6, 7] "0 1*16 2 3") 
   # sound "synth_keys_ii:4"
-  # up (slow 8 $ sine*200)                
-]
+  # up (slow 4 $ sine*200)                
+] # lpf (slow 8 $ sine*7000)
 
 d4 $ n (toScale [0, 5, 7] (run 2) )  # sound "arpy" 
 
@@ -56,7 +57,7 @@ d4 $ sound "jazz*3/3 wind*4/2"
 
 
 d9 $ slow 2 $ sound "[[odx*8]/2 [odx]*4 [odx]*8]/3 ]"
-|+| speed "1"
+|+| speed "{2,31,0.25}"
 
 d8 $ slow 8 $ striate 12 $ sound "[diphone/1 ~ diphone2/3]*4" # gain "1.1"
 |+| vowel "a i*16 o u*8"
@@ -65,3 +66,4 @@ d1 $ n (run 4) # s "drum"
 
 
 hush
+
