@@ -12,11 +12,13 @@ d9 $ silence
 
 d1 $ n "0 2 4 7" # s "midi"
 
-d1 $ sound "bd arpy"
+d1 $ (every 4) rev $ sound "bd <sn cp?0.2> arpy*4 sn"
 
 ==============================
 
 hush
+
+d1 $ silence
 
 d1 $ cps (120/60)
 
@@ -29,15 +31,43 @@ d9 $ midicmd "start" # s "midi"
 
 let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,d7,d8,d10,d11,d12,d13,d14,d15,d16]
 
+=== All about fx ========
+
+--select fx by progNum
+--prog   0 reverse   1 half    2 once    3 tape    4 fade    5 double   6 hold   
+d9 $ s "midi" # progNum "0" # midicmd "program" # midichan 3
+
+-- toggle selected fx. More than one fx can be active. 
+once $ ccn "31" # ccv "1" # s "midi" # midichan 3
+
+d9 $ ccn "31*4" # ccv "1" # s "midi" # midichan 3
+
+hush
 
 === All about cc  =======
 
+once $ ccn "3" # ccv "1" # s "midi" # midichan 3
 
-d9 $  slow 4 $ ccn "<3>" # ccv 1 # s "midi" # midichan 3
+-- Alternate rec and play of loop1 for 4 cycles each
+d9 $ slow 4 $ ccn "3" # ccv "<0 1>" # s "midi" # midichan 3
+
+d9 $ slow 4 $ ccn "3*4" # ccv "<0 1>" # s "midi" # midichan 3
+
+
+d9 $  slow 4 $ ccn "<3>" # ccv "<0 1>" # s "midi" # midichan 3
 
 d9 $ ccn 14 # ccv 1 # s "midi" # midichan 3
 
-d9 $ ccn 15 # ccv (slow 8 $ 127*sine) # s "midi" # midichan 3
+d9 $ ccn 15 # ccv (slow 4 $ 127*sine) # s "midi" # midichan 3
+
+d2 $ ccn "30*4" # ccv (scale 20 100 $ slow 30 sine) # s "midi"
+
+-- PANIC All Loops Stop
+d9 $ ccn 29 # ccv 1 # s "midi" # midichan 3
+
+
+-- WIPE All Loops Clear
+d9 $ ccn 31 # ccv 0 # s "midi" # midichan 3
 
 
 https://community.musictribe.com/t5/Musician/Ditto-X4-Midi-Control/td-p/84392
@@ -89,3 +119,27 @@ Sending Program change (needed for Ditto FX)
 see comment by JC here: https://blog.tidalcycles.org/superdirt-midi/
 
 d1 $ s "midi" # progNum "[1 2 3]" # midicmd "program"
+
+
+====================================================================
+explore fx
+https://club.tidalcycles.org/t/week-2-lesson-1-starting-out-with-effects/463
+
+explore every
+https://club.tidalcycles.org/t/week-3-lesson-1-exploring-the-every-function-including-tackling-the-meaning-of/502
+
+explore time (setcps)
+https://club.tidalcycles.org/t/week-2-lesson-2-manipulating-time-with-setcps-cps-patterns-and-fast-slow-functions/466
+
+
+
+==================================================================
+
+d2 $ n "0(3,8) 8*8" # sound "cpu2"
+  # squiz 5
+  # cps "0.5 1"
+
+d2 $ n "0 [~ 1] 2*2 3 4*3 5 ~ 7" 
+    # cps "<0.5 2> <2 1>"
+
+hush
