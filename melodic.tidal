@@ -1,0 +1,5 @@
+d1$ s "superchip" 
+  # n (slow 4 (scale "minor" "<5 4 3 2>"))
+  # release $ range 0.1 0
+
+hush
