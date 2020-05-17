@@ -58,7 +58,8 @@
   ()
   "*Arguments to the haskell interpreter (default=none).")
 
-(defvar tidal-boot-script-path "~/.cabal/share/arm-linux-ghc-8.4.4/tidal-1.4.9/BootTidal.hs"
+;;(defvar tidal-boot-script-path "~/.cabal/share/arm-linux-ghc-8.4.4/tidal-1.4.9/BootTidal.hs"
+(defvar tidal-boot-script-path "~/.cabal/share/x86_64-linux-ghc-8.6.5/tidal-1.4.9/BootTidal.hs"
   "*Full path to BootTidal.hs (inferred by introspecting ghc-pkg package db)."
 )
 

@@ -1,0 +1,12 @@
+-- inspired by tidalclub thread
+-- https://club.tidalcycles.org/t/melodic-examples-with-tidal/490/7
+-- 2020-05 kn00t
+// "drop-in replacement in kind" from
+// https://club.tidalcycles.org/t/melodic-examples-with-tidal/490/8
+
+d1$ stut' "<3 4?>" (1/12) (|+ note "<5 7>") $ s "superpiano"
+
+d2$ note (scale "minor" $ snowball 4 (+) (slow 2) $ (run 3)) 
+      # sound "gtr" # gain 0.9
+
+  hush
