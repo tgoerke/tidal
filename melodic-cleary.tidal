@@ -1,0 +1,56 @@
+-- inspired by tidalclub thread
+-- https://club.tidalcycles.org/t/melodic-examples-with-tidal/490/7
+// jobim & cleary // youtu.be/BR2pW7l6GME
+
+hush
+
+setcps 1
+
+d1$ slow 2
+  $ degradeBy "0.05"
+  $ s "ht:2 ~ ~ bd:2"
+  # pan (slow 13 cosine)
+  # gain 1.2
+  # lpf 2000
+  # room 0.4
+  # size 0.3
+
+d2$ slow 4 $ slice 8 "0 3!3" $ s "pebbles"
+  # cut 1
+  # gain "0.7 1 0.8!2"
+  # djf 0.9
+  # pan (slow 13 sine)
+
+d3$ silence
+
+d3$ slow 4
+  $ n "d'm9 . g'dom7 . c'maj7 . a'm9/4"
+  |+ n "<0!4 5!4>"
+  # s "superpiano"
+  # djf 0.4
+  # sustain 5
+  # room 0.5
+  # size 0.7
+  # lpf (slow 7 cosine*4000)
+  # gain 0.7
+
+-- bass
+d4$ every 3 (# att "0.7 1.2 0.3")
+  $ slow 8
+  $ iter 4
+  $ plyWith 8 (# speed 2)
+  $ note "d g c a"
+  |+ n "<0!5 5!4>"
+  # s "superhammond"
+  # octave 4
+  # sustain 0.5
+  # gain 1
+
+do
+  xfade 1 $ silence
+  xfade 2 $ silence
+  xfade 3 $ silence
+  xfade 4 $ silence
+
+
+  hush

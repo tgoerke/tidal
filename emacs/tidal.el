@@ -58,25 +58,8 @@
   ()
   "*Arguments to the haskell interpreter (default=none).")
 
-(defvar tidal-boot-script-path
-  (let ((filepath
-         (cond
-          ((string-equal system-type "windows-nt")
-           '(("path" . "echo off && for /f %a in ('ghc-pkg latest tidal') do (for /f \"tokens=2\" %i in ('ghc-pkg describe %a ^| findstr data-dir') do (echo %i))")
-             ("separator" . "\\")
-             ))
-          ((or (string-equal system-type "darwin") (string-equal system-type "gnu/linux"))
-           '(("path" . "ghc-pkg field -f ~/.cabal/store/ghc-$(ghc --numeric-version)/package.db tidal data-dir")
-             ("separator" . "/")
-             ))
-          )
-         ))
-    (concat
-     (string-trim (cadr (split-string
-                         (shell-command-to-string (cdr (assoc "path" filepath))) ":")))
-     (cdr (assoc "separator" filepath))
-     "BootTidal.hs")
-    )
+;;(defvar tidal-boot-script-path "~/.cabal/share/arm-linux-ghc-8.4.4/tidal-1.4.9/BootTidal.hs"
+(defvar tidal-boot-script-path "~/.cabal/share/x86_64-linux-ghc-8.6.5/tidal-1.4.9/BootTidal.hs"
   "*Full path to BootTidal.hs (inferred by introspecting ghc-pkg package db)."
 )
 

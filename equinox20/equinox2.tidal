@@ -43,7 +43,7 @@ d4
   # up (slow 4 $ sine*200)                
 ] # lpf (slow 8 $ sine*7000)
 
-d4 $ n (toScale [0, 5, 7] (run 2) )  # sound "arpy" 
+d4 $ n (toScale [0, 6, 16] (run 4) )  # sound "arpy:3" 
 
 hush
 
