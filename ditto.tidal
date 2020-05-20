@@ -1,35 +1,56 @@
-=== All about clock ========0
+:script ~/src/tidal/ditto.hs
 
-d9 $ midicmd "midiClock*48" # s "midi" # midichan 3
+-- llllllllllllllllllllllllllllllllll
+-- go stop clear level store delete 
+-- reverse half tape fade double hold
+-- hush panic wipe
+-- llllllllllllllllllllllllllllllllll
 
-once $ midicmd "stop" # s "midi"
+d8$ slow 8 $ l1go
 
-d9 $ midicmd "start/4" # s "midi"
+d9 $ fast 4 $ lfx ltape
+
+d9 $ silence
+
+once $ lfx lreverse
+
+once $ lpanic
+
+d8$ l1stop # silence
+
+once$ l1clear
+
+hush
+
+d9$ l1level (slow 4 $ range 1 127 $ sine) 
+
+d9$ ccn "3/4 14/16" # ccv 1 # ditto
+
+d9$ ccn "9/4 3/2 14/16" # ccv "1" # ditto
+
+d9 $ slow 4 $  l1go # ditto
+
+
+
+=== All about clock ========
+  
+d9 $ midicmd "midiClock*48" # ditto
+
+once $ midicmd "stop" # ditto
+
+d9 $ midicmd "start/4" # ditto
 
 d9 $ silence
 
 ===============================
 
-d1 $ n "0 2 4 7" # s "midi"
+d9 $ midicmd "midiClock*48" # white
 
-d1 $ (every 4) rev $ sound "bd <sn cp?0.2> arpy*4 sn"
+once $ midicmd "stop" # white
+
+d9 $ midicmd "start/4" # white
 
 ==============================
-
-hush
-
-d1 $ silence
-
-d1 $ cps (120/60)
-
-d9 $ midicmd "midiClock*48" # s "midi"
-
-d9 $ midicmd "stop" # s "midi"
-
-d9 $ midicmd "start" # s "midi"
-
-
-let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,d7,d8,d10,d11,d12,d13,d14,d15,d16]
 
 === All about fx ========
 
@@ -40,7 +61,7 @@ d9 $ s "midi" # progNum "0" # midicmd "program" # midichan 3
 -- toggle selected fx. More than one fx can be active. 
 once $ ccn "31" # ccv "1" # s "midi" # midichan 3
 
-d9 $ ccn "31*4" # ccv "1" # s "midi" # midichan 3
+d9 $ ccn "31*4" # ccv "0" # s "midi" # midichan 3
 
 hush
 
@@ -58,17 +79,11 @@ d9 $  slow 4 $ ccn "<3>" # ccv "<0 1>" # s "midi" # midichan 3
 
 d9 $ ccn 14 # ccv 1 # s "midi" # midichan 3
 
-d9 $ ccn 15 # ccv (slow 4 $ 127*sine) # s "midi" # midichan 3
+d9 $ ccn 15 # ccv 127 # s "midi" # midichan 3
 
 d2 $ ccn "30*4" # ccv (scale 20 100 $ slow 30 sine) # s "midi"
 
--- PANIC All Loops Stop
-d9 $ ccn 29 # ccv 1 # s "midi" # midichan 3
-
-
--- WIPE All Loops Clear
-d9 $ ccn 31 # ccv 0 # s "midi" # midichan 3
-
+----------------------------------------------------------------------
 
 https://community.musictribe.com/t5/Musician/Ditto-X4-Midi-Control/td-p/84392
 MIDI Spec
@@ -143,3 +158,4 @@ d2 $ n "0 [~ 1] 2*2 3 4*3 5 ~ 7"
     # cps "<0.5 2> <2 1>"
 
 hush
+

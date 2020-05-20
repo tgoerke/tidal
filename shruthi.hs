@@ -1,3 +1,11 @@
+-- MIDI channels for my hardware synths
+let white = s "midi" # midichan 1
+let black = s "midi" # midichan 2
+
+-- Shorthand to send MIDI cc  --e.g. d9 $ cc cutoff 100 # black
+let cc n v = ccn n # ccv v
+
+-- MIDI CC defs
 let osc1Shape = 20
 let osc1Param = 21
 let osc1Range = 22
@@ -36,4 +44,9 @@ let seqAmount = 77
 let arpDirection = 78
 let arpRange = 79
 let arpPattern = 80
-let 
+
+-- select program to process audio in (depends on preset settings)
+let bubbleIn = progNum 124 # midicmd "program" # black
+let tremoIn = progNum 125 # midicmd "program" # black
+let bleepIn = progNum 126 # midicmd "program" # black
+let noodleIn = progNum 127 # midicmd "program" # black
