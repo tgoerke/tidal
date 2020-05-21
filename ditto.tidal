@@ -6,15 +6,23 @@
 -- hush panic wipe
 -- llllllllllllllllllllllllllllllllll
 
-d8$ slow 8 $ l1go
+d8$ slow 32 $ l1go
 
-d9 $ fast 4 $ lfx ltape
+d9$ stack
+  [ slow 2 $ lfx ltape
+  , fast 2 $ lfx ldouble
+  , slow 4 $ lfx lreverse
+  ]
 
-d9 $ silence
+d9$ silence
 
-once $ lfx lreverse
+once$ lfx lreverse
 
-once $ lpanic
+once$ ldecay 127
+
+d9$ ldecay $ slow 2 $ range 1 127 sine
+
+once$ lpanic
 
 d8$ l1stop # silence
 
@@ -28,9 +36,11 @@ d9$ ccn "3/4 14/16" # ccv 1 # ditto
 
 d9$ ccn "9/4 3/2 14/16" # ccv "1" # ditto
 
-d9 $ slow 4 $  l1go # ditto
+d9 $ slow 8 $  l1go 
 
+d8 $ slow 4 $ l2go
 
+once$ l1go
 
 === All about clock ========
   

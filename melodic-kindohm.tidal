@@ -23,7 +23,7 @@ d2$ plyWith 4 (0.75 ~>) $ s "bd lt mt ht" # gain 0.9
   hush
 
 -- friendly aliens
-d1$ degradeBy 0.7 $ stack
+d2$ degradeBy 0.7 $ stack
   [ plyWith "<10 4 15>" ((|* speed 1.2) . (|* gain 0.9))
   $ s "{lipsum pebbles bubble}%4"
   # n "<0 3 5 4 30>"
@@ -35,9 +35,9 @@ d1$ degradeBy 0.7 $ stack
   hush
 
 -- pluck strings
-d2$ someCycles rev
+d3$ someCycles rev
   $ stack
-  [ plyWith "<1 8 4 16 2>"
+  [ -- plyWith "<1 8 4 16 2>"
   ((|* speed 1.003) . (|* legato 1.5) . (# gain 0.8))
   $ every 4 (* speed "<0.9 1.5>")
   $ every 2 (# speed "<2 3 4>")
@@ -45,7 +45,7 @@ d2$ someCycles rev
   # legato 1
   --, plyWith "<4 5 3 6>" (|* legato 0.5) $ s "koy*2"
   --, plyWith "<6 3 2 4>" (# gain 1.05 )  $ s "drum"
-  ]
+  ] # gain 0.8
 
   hush
   
@@ -54,7 +54,7 @@ d2$ plyWith "<8 4 2 1>" id
 
   hush
 
-d3$ plyWith "<20 40 80 60>" (# gain 0.9)
+d4$ plyWith "<20 40 80 60>" (# gain 0.9)
   $ slow 16 $ striate' 128 (1/60)
   $ s "sugar:4" # gain 1 # speed 1.5
 
