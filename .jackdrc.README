@@ -1,0 +1,9 @@
+/usr/bin/jackd -dalsa -dhw:Device -r48000 -p1024 -n3
+
+
+Put this into /.jackdrc to pick sound card by name. 
+Names are from cat /proc/asound/cards
+My cheap USB sound card is named "Device"
+If in trouble change this to -dhw:2
+corresponding to device numbers from aplay -l
+
