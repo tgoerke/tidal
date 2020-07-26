@@ -4,9 +4,12 @@
 -- https://www.youtube.com/watch?v=59w_ne9jeI8
 -- 2020-05 kn00t
 
--- ratcheting 3 and 5 times each sample
-d1$ ply "3 5" $ s "bd*2 cp mt lt" # n (run 5) 
+setcps 0.3
 
+-- ratcheting 3 and 5 times each sample
+d1 $ s "bd*2 cp mt lt" # n (run 5) 
+
+hush
 
 -- apply function while ratcheting (here id := idendity function) 
 d1$ plyWith 4 id $ sound "bd cp"
@@ -43,8 +46,8 @@ d3$ someCycles rev
   $ every 2 (# speed "<2 3 4>")
   $ s "gtr" # cps 0.8 # room 0.7 # sz 0.5
   # legato 1
-  --, plyWith "<4 5 3 6>" (|* legato 0.5) $ s "koy*2"
-  --, plyWith "<6 3 2 4>" (# gain 1.05 )  $ s "drum"
+  , plyWith "<4 5 3 6>" (|* legato 0.5) $ s "koy*2"
+  , plyWith "<6 3 2 4>" (# gain 1.05 )  $ s "drum"
   ] # gain 0.8
 
   hush
@@ -59,3 +62,15 @@ d4$ plyWith "<20 40 80 60>" (# gain 0.9)
   $ s "sugar:4" # gain 1 # speed 1.5
 
   
+=========================================================
+  -- variation with Fernando
+  -- on a chicken theme 
+d1$ degrade $ plyWith 4 ((|+ speed 0.3) . (# gain 0.1))
+  $ s "[bd <cp cp*2> mt lt, odx*2]"
+
+d2 $ degrade $ note "c5 d5 f4 f5" # s "gtr" # legato 1
+
+d4$ plyWith "<2 2 8 6 >" (# gain 0.9)
+  $ s "sugar:4" # gain 0.7 # speed 1.4
+
+hush

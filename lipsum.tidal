@@ -39,3 +39,24 @@ d3$ off 0.125 (# crush 2) $ sound "bd [~ sn:2] mt lt*2"
 
 
   hush
+
+
+
+---------------------------------------------------------
+-- session with Fernando
+
+d1$ off 0.125 (fast 2 . rev)
+  $ sometimes (fast "0.5 2")
+  $ slow 8 $ n "0 1 2 3 " # sound "lipsum numbers" # room 0.3 # sz 0.8
+
+d2$ degradeBy 0.8 $ slow 2
+  $ sometimes (fast "2 0.5")
+  $ n "bd [1*8,2*8,3*8]"
+  # sound "arpy:3"
+
+
+d3$ n (scale "harmonicMinor" "2(3,8) 5(3,8) 3(3,8) 0*2")
+  # sound "jvbass" # room 0.3 # sz 0.8
+
+
+  hush
