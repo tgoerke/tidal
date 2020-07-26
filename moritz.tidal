@@ -1,0 +1,25 @@
+d1 $ sound "glitch"
+
+d2 $ sound "bd sn" # n 123
+
+d3 $ sound"glitch2"
+
+d4 $ sound "arpy" # n 9
+
+d5 $ sound "bass" # n 123
+
+d6 $ sound
+
+d7 $ sound "sn sn sn sn" # n 123
+
+d8  $ n "7" # sound "numbers"
+
+d9 $ sound "alex" # n 123
+
+d10 $ sound "kurt bd bd bd" # n 1
+
+d11 $ sound "bass bass bass bass bass bass bass bass bass bass bass bass bass"
+
+ hush
+
+ setcps (120*60*4)

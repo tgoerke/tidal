@@ -1,0 +1,27 @@
+
+d1$ slow 4 $ chop 16 $ striate 16 $ s "fer:0"
+
+d1$ loopAt 32 $ chop 32 $ s "fer"
+
+:t slice
+
+d1$ slice 8 "<[8 7] [1 2]>"  $ s "fer"
+
+d1$ slice 8 "[1 2 3 4]/8" $ s "fer"
+
+d1$ slice 1 "8 7" $ chop 8 $ s "fer"
+
+: splice
+
+d1 $ plyWith 2 (( # gain 0.9 ) . (|+ n 12))
+   $ splice 16 "{[1 6] [2 5] [3 4] [4 8]}/8"
+   $ s "fer"
+   # cut 1
+   # speed (scale "major" (struct "t(8,3)" $ "2*8" )) 
+
+d2$ plyWith 8 (|* gain 0.8) $ s "kick:4" # gain 0.8
+
+hush
+
+:t chop
+

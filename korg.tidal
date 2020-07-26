@@ -1,0 +1,19 @@
+let -- Korg Volca Beats
+  drum :: Pattern String -> ControlPattern
+  drum = n . (subtract 60 . drumN <$>)
+  drumN :: Num a => String -> a
+  drumN "bd" = 36
+  drumN "sn" = 38
+  drumN "lt" = 43
+  drumN "ht" = 50
+  drumN "ch" = 42
+  drumN "oh" = 46
+  drumN "cp" = 39
+  drumN "cl" = 75
+  drumN "ag" = 67
+  drumN "cr" = 49
+  drumN _ = 0
+
+d1 $ drum "[bd sn*2,<cp cl> ag,ch*8,~ oh]" # sound "midi"
+
+hush

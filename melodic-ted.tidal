@@ -5,16 +5,21 @@
 // https://github.com/tedthetrumpet/tidal/blob/master/frum01.tidal
 // 2020-05 remixed by kn00t
 
-setcps (120/60/4)
+setcps (110/60/4)
 
-d1$  stack [
-  s "[bd:1(3,8?) , [~ cp]*4? , hh*16?]"
+d1$ stack [ jux rev $
+  s "[kick:1(3,8?) , [~ cp]*4? , hc*16?]"
   , s "[odx*4,odx:2*4]"
-  ] # gain 0.9
+  ]
+  # gain 0.8
+  # room 0.5
+  # sz 0.5
+  # lpf (slow 4 $ range 3000 4000 saw)
   
-d2$ slow 2
+d2$ slow "[2 8]/16"
+  -- $ plyWith "1*4 2*2 3*4" ((|+ 12) . (# speed 12 ))  
   $ s "superreese"
-  +| up "c'min(<3 5>,8) ef'min(3,8) e'min(<5 3>,8) f'maj(3,8,<3 5 2>)"
+  +| up "d'min(<5 3>,8) g'min(3,8) c'min(<5 3>,8) f'maj(3,8,<3 5 2>)"
   # legato 2
   # release 1.2
   # gain 0.9
@@ -23,7 +28,9 @@ solo 2
 
 unsolo 2
 
-d3$ s "superhoover!8" # up "<a4 c4 f4 e4>" # legato 0.8
+d3$ s "superhoover!8"
+  # every 8 (fast "2 4 0.5 0.25 8") ( up "<d4 [~ as4*2 c4] f4 [g4 f<4 3 5>]>" )
+  # legato 0.8
  
 hush
 
