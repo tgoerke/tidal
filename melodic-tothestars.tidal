@@ -1,0 +1,40 @@
+-- ToTheStars
+-- Axolity patch by tiar
+-- midichan 0
+
+hush
+
+setcps 1
+
+d1$ slow 4  $ s "arp" # speed "1"
+  # gain "0.7 1 0.8!2"
+  # djf (fast 2 sine)
+  # pan (slow 13 sine)
+
+d2$ plyWith "<1 0 1 3>" (|+ n 5)  $ s "midi" # midichan 0
+  # n (slow 2 (scale "minor" "<2 5> 4 <5 3>"))
+
+d3$ slow 16
+  $ n "[d'm . g'm . c'm . f'm]"
+  -- |+ n "<0!5 3!5>"
+  # s "midi" # midichan 0
+
+d4$ note (scale "minor" $ snowball 3 (+) (fast 2) $ (run 3))
+  # s "midi" # midichan 0
+
+d4$ silence
+
+d5$ s "[~ kick:3/16,hc:2 cp?0.8 hc <~ ho?0.5>]" # gain 0.5 # room 1.8 # sz 0.8
+
+do
+  xfade 1 $ silence
+  xfade 2 $ silence
+  xfade 3 $ silence
+  xfade 4 $ silence
+  xfade 5 $ silence
+
+
+  hush
+
+
+
