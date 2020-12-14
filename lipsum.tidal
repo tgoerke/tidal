@@ -1,7 +1,9 @@
 -- based on yaxu's equinox "afterparty of errors" numbers
 
+setcps 0.3
+
 d1$ slow 8
-  -- $ off 0.5 (# s "supermandolin")
+  $ off 0.5 (# s "supermandolin")
   -- $ off 0.125 (|+ n "<7 8>")
   -- $ off 0.25 ((# s "drum") . (# s "cr*4"))
   -- $ jux (# squiz 5) $ off 0.125 ( (fast 2) . (# crush 5))
@@ -59,4 +61,8 @@ d3$ n (scale "harmonicMinor" "2(3,8) 5(3,8) 3(3,8) 0*2")
   # sound "jvbass" # room 0.3 # sz 0.8
 
 
+d4$ plyWith "[4 2]/8" ( (|+ gain 0.3).(#squiz 2).(#pan 0.5)) $ sound "[odx*8,sn,hc*32?0.6]" 
+
   hush
+
+d1$ silence
