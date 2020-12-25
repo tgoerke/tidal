@@ -1,0 +1,64 @@
+-- naviarhaiku364 – Deep in the water 
+-- https://www.naviarrecords.com/2020/12/23/naviarhaiku364-deep-in-the-water/
+
+-- Deep in the water,
+-- softly moving his fins,
+-- a carp, dreaming
+
+hush
+
+-- speechless koy 
+--  outdoor battles 
+-- circus house 
+--  mouth hmm 
+-- incoming alphabet 
+--  yeah xmas claus 
+
+xfade 1$ stack 
+  [ every 3 (density 2) 
+  $ jux (iter 8) 
+  $ slow 16 
+  $ striate' 64 0.05 
+  $ sound "speechless koy"
+  # speed "[1 0.5 2 0.8]/2 2 4 3 5 5 3 2 2]/5]"
+  , slow 16 $ plyWith 3 (# n "[10 30 <50 70> 80,40 50]") 
+  $ striate 4 
+  $ loopAt (10 * tri) 
+  $ sound "[[outdoor battles]battles]battles]" 
+  # n (run 3) 
+  # legato 1
+  ] # room "[1.8 0.5]" # size "[1.2 0.4]" # gain 0.7
+
+xfade 1$ silence
+
+d2$ slow 8 
+  $ off 0.125 (# s "circus house")
+  $ sound "mouth hmm"
+  # speed "[1 0.75 0.5]/2, [5 4 3 6 4 5 4 3]/5]"
+  # delay 0.5
+  # delaytime 0.3
+  # delayfeedback 0.7
+  # shape 0.3
+  # room 0.5 # size 0.8
+
+xfade 2$ silence
+
+d3$ every 3 (density 2)
+  $ jux (iter 8)
+  $ slow 8
+  $ sound "incoming alphabet"
+  # speed "[1 0.5 2 0.8]/2 2 4 3 5 5 3 2 2]/5]"
+  # pan sine
+  # gain 0.9
+
+d3$ silence
+
+d4$ degrade
+  $ slow 8
+  $ plyWith 8 (# up 4)
+  $ sound "[yeah yeah yeah] claus]/3"
+  # lpf "1000"
+  # speed "[1 0.8 2 1.25], [~ 0.25 0.125]/2"
+  # n "[[1 <0.5 2> 0.3 0.6], [0.3 <0.05 2>]/5]"
+
+xfade 4 $ silence
