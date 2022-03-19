@@ -2,12 +2,25 @@
 -- Drum channel is 10 ---> Tidal: 9
 -- Bass channel is 9  ---> Tidal: 8
 
-d1$ slow 4 $ plyWith 4 (# n (run 5))  $ n "[64 65?0.5, [60 66] 20 22 [32,33,34,35,36]*2]*2" # sound "midi" # midichan 9
+setcps 0.5
+
+d1$ slow 4
+  $ plyWith 4 (# n (run 5))
+  $ n "[64 65?0.5, [60 66] 20 22 [32,33,34,35,36]*2]*2"
+  # sound "midi" # midichan 9
 
 hush
 
-d2$ n "-10" # s "midi" # midichan 8
+d2$ every 4 (slow 2)
+  $ n "[-10 <-12 -16>]/2"
+  # s "midi" # midichan 8
 
-d3$ plyWith "<1 0 1 [3 4] 2>" (|+ n 5)  $ s "midi" # midichan 8
+d3$ plyWith "<1 1 1 [3 4] 2>" (|+ n "<4 3 5 7 24>")
+  $ s "midi" # midichan 8
 
-d4$ note (scale "minor" $ snowball 3 (-) (fast 2) $ (run 4))  # s "midi" # midichan 8
+d4$ note (scale "minor"
+  $ snowball 4 (-) (fast 2) $ (run 20))
+  # s "midi" # midichan 8
+
+xfade 4 $ silence
+

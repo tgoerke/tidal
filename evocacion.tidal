@@ -32,3 +32,4 @@ d5$ progNum "[<0 2> <1 3>]/16" # midicmd "program" # white
 
 hush
 
+d6$ s "kick/4 sn/2"

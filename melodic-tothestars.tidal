@@ -11,16 +11,16 @@ d1$ slow 4  $ s "arp" # speed "1"
   # djf (fast 2 sine)
   # pan (slow 13 sine)
 
-d2$ plyWith "<1 0 1 3>" (|+ n 5)  $ s "midi" # midichan 0
+d2$ plyWith "<1 0 1 3>" (|+ n 5)  $ s "midi" # midichan 1
   # n (slow 2 (scale "minor" "<2 5> 4 <5 3>"))
 
 d3$ slow 16
   $ n "[d'm . g'm . c'm . f'm]"
   -- |+ n "<0!5 3!5>"
-  # s "midi" # midichan 0
+  # s "midi" # midichan 2
 
 d4$ note (scale "minor" $ snowball 3 (+) (fast 2) $ (run 3))
-  # s "midi" # midichan 0
+  # s "midi" # midichan 1
 
 d4$ silence
 

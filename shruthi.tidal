@@ -4,24 +4,26 @@
 
 once$ progNum 124 # midicmd "program" # white
 
+setcps 0.5
+
 d1$ stack
   [ n (struct "t(3,8) t(5,8)"
     $ scale "minor" (run "16 8 4") )
     + (slow 4 $ n "<12 5 7 12>") # white
-  , progNum "[<0 1> <2 3>] 10 11 [5 7]" # midicmd "program" # white
+  -- , progNum "[<0 1> <2 3>] 10 11 [5 7]" # midicmd "program" # white
   ]
 
-d3$ plyWith 4 (|+ squiz 3) $ s "[kick:8*4,snare:2,hh*16]"
+d3$ plyWith 2 (|+ squiz 3) $ s "[kick:8*4,snare:2,hh*16]"
 
 -- push keys -- opens VCF/VCA
 
-d6$ slow 4 $ n "1 [2 3]*2 4*8" # black
+d6$ slow 4 $ n "1 [2 3]*2 4*8" # white
 
 -- move knobs -- filter
 
-d7$ cc cutoff (slow 8 $ range 1 127 $ sine) # black
+d7$ cc cutoff (slow 8 $ range 1 127 $ sine) # white
 
-d8$ cc resonance (fast 2 $ range 127 1 $ cosine) # black
+d8$ cc resonance (fast 2 $ range 127 1 $ cosine) # white
 
 -- bubbleIn 124 tremoIn 125 bleepIn 126 noodleIn 127
 

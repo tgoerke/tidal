@@ -35,8 +35,8 @@ d3$ slow 4
   # gain 0.7
 
 -- bass
-d4$ stack [ slow 8 $ l2go,
-    every 3 (# att "0.7 1.2 0.3")
+d4$ slow 8 
+  $ every 3 (# att "0.7 1.2 0.3")
   $ slow 8
   $ iter 4
   $ plyWith 8 (# speed 2)
@@ -46,7 +46,6 @@ d4$ stack [ slow 8 $ l2go,
   # octave 4
   # sustain 0.5
   # gain 1
-  ]
 
 do
   xfade 1 $ silence
