@@ -1,0 +1,36 @@
+Algorave 10th birthday stream ~ ten.algorave.com ~ linktr.ee/kn00t
+
+OpenGuitar is a frameless DIY guitar that can be assembled in small workshops with kids
+-- to learn about woodwork, electronics, sensors, coding ... and to have fun
+-- we want to include the guitar into a livecoding setup ~ played live ;)
+-- today we use samples. Hope you like it ~
+~ www.openguitar.org ~
+
+d1 $ degradeBy 0.6
+$ stack
+[
+note (scale "harmonicMinor" $ snowball 3 (+) (slow 7) $ "[des/2 ges/2]")
+,
+fast 2 $ note (scale "harmonicMinor" $ "[<1 5> 5 4 7]/8")
+# s "bass:1 bass:3"
+]
+# s "gtr"
+# gain 0.9
+# room 0.5
+# size (slow 15 $ 1.2 * sine)
+
+d2 $ degradeBy 0.4 $ plyWith "<2 2 8 6>" (# gain 0.9)
+$ s "sugar:1 sugar:2"
+# gain 0.2 # speed 0.4
+
+
+d3 $ plyWith 4 (# squiz 2)
+$ s "<kick hc:8> [popkick:3 snare:2]"
+# n "[~ 1] 2*2"*2
+# speed "<1 2> [3 4]"
+# room 0.4 # sz 0.3 # gain 0.9
+
+
+xfade 3 $ silence 
+
+
