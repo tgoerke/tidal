@@ -1,0 +1,43 @@
+-- sample pack from Empty Vessel - https://bit.ly/3cYOlg7
+-- via https://www.youtube.com/watch?v=p4A_gybuhmY
+
+d1$ plyWith 3 (# n "[1 3 <5 7> 8,4 5]") 
+  $ striate 64 
+  $ loopAt 8 
+  $ sound "EmptyVessel:0" 
+  # n (run 8) 
+  # cut 1
+
+hush
+
+d2$ slow 8 
+  $ trunc 0.5 
+  $ striate' 64 0.1 
+  $ sound "bd*8 sn*4 hh*3 cp [hh sn]*4 bd*4"
+  # speed "[1 0.75 0.5]/2, [5 4 3 6 4 5 4 3]/5]"
+  # delay 0.5
+  # delaytime 0.3
+  # delayfeedback 0.7
+  # shape 0.3
+
+hush
+
+d3$ every 3 (density 2) 
+  $ jux (iter 8) 
+  $ slow 8 
+  $ striate' 64 0.05 
+  $ sound "EmptyVessel:4"
+  # speed "[1 0.5 2 0.8]/2 2 4 3 5 5 3 2 2]/5]"
+
+
+hush
+
+d4$ degrade 
+  $ slow 8 
+  $ plyWith 64 (# up 1) 
+  $ striate' 16 0.01 
+  $ sound "EmptyVessel:9 EmptyVessel:7 EmptyVessel:8"
+  # lpf "1000"
+  # speed "[1 0.8 2 1.25], [~ 0.25 0.125]/2"
+  # n "[[1 <0.5 2> 0.3 0.6], [0.3 <0.05 2>]/5]"
+
